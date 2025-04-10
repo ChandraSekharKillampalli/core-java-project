@@ -1,0 +1,11 @@
+
+g	java:S101
+"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ä¥ úûÿÿÿÿ
+@
+java:S1197"*Move the array designators [] to the type.(ú–íÕ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ÛòÃã
+h
+java:S6204"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ÛòÃã
+E
+java:S1197"*Move the array designators [] to the type.(®Ø¶úÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(×Æáî

@@ -1,0 +1,24 @@
+
+n
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ò£Äy
+o
+java:S2293z"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ú‚€µ
+=
+java:S1125 "'Remove the unnecessary boolean literal.(Ì–õñ
+S	java:S106("9Replace this use of System.out or System.err by a logger.(©İ×·üÿÿÿÿ
+J
+java:S28641"4Iterate over the "entrySet" instead of the "keySet".(Ş€øÖ
+B
+java:S11254"'Remove the unnecessary boolean literal.(¸şÇİÿÿÿÿÿ
+S	java:S1067"9Replace this use of System.out or System.err by a logger.(Ô¨…æøÿÿÿÿ
+S	java:S106@"9Replace this use of System.out or System.err by a logger.(»´¬…ûÿÿÿÿ
+S	java:S106D"9Replace this use of System.out or System.err by a logger.(­ı¾Ãûÿÿÿÿ
+N	java:S106N"9Replace this use of System.out or System.err by a logger.(ÆÀûı
+N	java:S106S"9Replace this use of System.out or System.err by a logger.(ÆÀûı
+S	java:S106]"9Replace this use of System.out or System.err by a logger.(“™¿‘úÿÿÿÿ
+N	java:S106_"9Replace this use of System.out or System.err by a logger.(Ê—˜
+J
+java:S2864g"4Iterate over the "entrySet" instead of the "keySet".(Ş€øÖ
+E
+java:S1197v"*Move the array designators [] to the type.(º ìıÿÿÿÿ
+T	java:S106ˆ"9Replace this use of System.out or System.err by a logger.(‚‰Áéûÿÿÿÿ

@@ -1,5 +1,9 @@
 package core;
 
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.OptionalInt;
+
 public class BeautifulNumber {
     public static void main(String[] args) {
         int[] A = {1, -1, 2, 10};
@@ -31,5 +35,12 @@ public class BeautifulNumber {
         }
 
         System.out.println("Most Beautiful Number: " + mostBeautiful);
+
+        //Other way using java 8
+        int totalSum = Arrays.stream(A).sum();
+        OptionalInt highest = Arrays.stream(A).sorted().max();
+        System.out.println("total sum: " + totalSum);
+        System.out.println("Highest: " + highest);
+        System.out.println("Beautiful Number:: " + (totalSum*highest.getAsInt()));
     }
 }

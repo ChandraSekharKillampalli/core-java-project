@@ -19,7 +19,9 @@ public class Problem_1 {
         // print the first repeated character
 
         List<Integer> numbers = Arrays.asList(2,3,4,5);
+        int sum = numbers.stream().reduce(0, (a,b) -> (a+b));
         int even = numbers.stream().filter(x -> x % 2 == 0).reduce(0, (ans,i) -> ans + i);
         System.out.println("Event::" + even);
+        System.out.println("Sum::" + sum);
     }
 }

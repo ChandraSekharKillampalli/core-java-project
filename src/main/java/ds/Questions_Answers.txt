@@ -1,0 +1,351 @@
+// Arrays:
+public class ArrayOperations {
+    // How to find the largest element in an array?
+    public static int findLargest(int[] arr) {
+        int max = arr[0];
+        for (int num : arr) {
+            if (num > max) max = num;
+        }
+        return max;
+    }
+
+    // How to find the smallest element in an array?
+    public static int findSmallest(int[] arr) {
+        int min = arr[0];
+        for (int num : arr) {
+            if (num < min) min = num;
+        }
+        return min;
+    }
+
+    // How to reverse an array?
+    public static void reverseArray(int[] arr) {
+        int left = 0, right = arr.length - 1;
+        while (left < right) {
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++; right--;
+        }
+    }
+
+    // How to remove duplicate elements from an array?
+    public static int[] removeDuplicates(int[] arr) {
+        return java.util.Arrays.stream(arr).distinct().toArray();
+    }
+
+    // How to search for an element in a sorted array (Binary Search)?
+    public static int binarySearch(int[] arr, int target) {
+        int left = 0, right = arr.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] == target) return mid;
+            if (arr[mid] < target) left = mid + 1;
+            else right = mid - 1;
+        }
+        return -1;
+    }
+}
+
+// Linked Lists:
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int val) { this.val = val; }
+}
+
+class LinkedListOps {
+    // How to reverse a linked list?
+    public static ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+        return prev;
+    }
+
+    // How to detect a cycle in a linked list?
+    public static boolean hasCycle(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+
+    // How to find the middle element of a linked list?
+    public static ListNode findMiddle(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    // How to insert a node at the beginning of a linked list?
+    public static ListNode insertAtBeginning(ListNode head, int val) {
+        ListNode newNode = new ListNode(val);
+        newNode.next = head;
+        return newNode;
+    }
+
+    // How to insert a node at the end of a linked list?
+    public static ListNode insertAtEnd(ListNode head, int val) {
+        ListNode newNode = new ListNode(val);
+        if (head == null) return newNode;
+        ListNode temp = head;
+        while (temp.next != null) temp = temp.next;
+        temp.next = newNode;
+        return head;
+    }
+
+    // How to insert a node at a specific position in a linked list?
+    public static ListNode insertAtPosition(ListNode head, int val, int pos) {
+        if (pos == 0) return insertAtBeginning(head, val);
+        ListNode newNode = new ListNode(val);
+        ListNode temp = head;
+        for (int i = 0; i < pos - 1 && temp != null; i++) {
+            temp = temp.next;
+        }
+        if (temp != null) {
+            newNode.next = temp.next;
+            temp.next = newNode;
+        }
+        return head;
+    }
+}
+
+// Stacks:
+// How to implement a stack using an array?
+class StackArray {
+    int[] stack;
+    int top = -1;
+
+    StackArray(int size) {
+        stack = new int[size];
+    }
+
+    void push(int val) {
+        if (top < stack.length - 1) stack[++top] = val;
+    }
+
+    int pop() {
+        return (top >= 0) ? stack[top--] : -1;
+    }
+}
+
+// How to implement a stack using a linked list?
+class StackLinkedList {
+    ListNode top;
+
+    void push(int val) {
+        ListNode node = new ListNode(val);
+        node.next = top;
+        top = node;
+    }
+
+    int pop() {
+        if (top == null) return -1;
+        int val = top.val;
+        top = top.next;
+        return val;
+    }
+}
+
+// How to check for balanced parentheses using a stack?
+class ParenthesesChecker {
+    public static boolean isBalanced(String str) {
+        java.util.Stack<Character> stack = new java.util.Stack<>();
+        for (char ch : str.toCharArray()) {
+            if (ch == '(' || ch == '[' || ch == '{') stack.push(ch);
+            else {
+                if (stack.isEmpty()) return false;
+                char top = stack.pop();
+                if ((ch == ')' && top != '(') ||
+                    (ch == ']' && top != '[') ||
+                    (ch == '}' && top != '{')) return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+}
+
+// How to evaluate a postfix expression using a stack?
+class PostfixEvaluator {
+    public static int evaluate(String expr) {
+        java.util.Stack<Integer> stack = new java.util.Stack<>();
+        for (String token : expr.split(" ")) {
+            if (token.matches("\\d+")) stack.push(Integer.parseInt(token));
+            else {
+                int b = stack.pop(), a = stack.pop();
+                switch (token) {
+                    case "+": stack.push(a + b); break;
+                    case "-": stack.push(a - b); break;
+                    case "*": stack.push(a * b); break;
+                    case "/": stack.push(a / b); break;
+                }
+            }
+        }
+        return stack.pop();
+    }
+}
+
+// Queues:
+// How to implement a queue using an array?
+class QueueArray {
+    int[] queue;
+    int front = 0, rear = 0, size = 0;
+
+    QueueArray(int capacity) {
+        queue = new int[capacity];
+    }
+
+    void enqueue(int val) {
+        if (size < queue.length) {
+            queue[rear] = val;
+            rear = (rear + 1) % queue.length;
+            size++;
+        }
+    }
+
+    int dequeue() {
+        if (size == 0) return -1;
+        int val = queue[front];
+        front = (front + 1) % queue.length;
+        size--;
+        return val;
+    }
+}
+
+// How to implement a queue using a linked list?
+class ListNodeQ {
+    int val;
+    ListNodeQ next;
+    ListNodeQ(int val) { this.val = val; }
+}
+
+class QueueLinkedList {
+    ListNodeQ front = null, rear = null;
+
+    void enqueue(int val) {
+        ListNodeQ node = new ListNodeQ(val);
+        if (rear == null) front = rear = node;
+        else {
+            rear.next = node;
+            rear = node;
+        }
+    }
+
+    int dequeue() {
+        if (front == null) return -1;
+        int val = front.val;
+        front = front.next;
+        if (front == null) rear = null;
+        return val;
+    }
+}
+
+// Trees:
+class TreeNode {
+    int val;
+    TreeNode left, right;
+    TreeNode(int val) { this.val = val; }
+}
+
+class BinaryTreeOps {
+    // How to perform in-order traversal of a binary tree?
+    public static void inorder(TreeNode root) {
+        if (root != null) {
+            inorder(root.left);
+            System.out.print(root.val + " ");
+            inorder(root.right);
+        }
+    }
+
+    // How to perform pre-order traversal of a binary tree?
+    public static void preorder(TreeNode root) {
+        if (root != null) {
+            System.out.print(root.val + " ");
+            preorder(root.left);
+            preorder(root.right);
+        }
+    }
+
+    // How to perform post-order traversal of a binary tree?
+    public static void postorder(TreeNode root) {
+        if (root != null) {
+            postorder(root.left);
+            postorder(root.right);
+            System.out.print(root.val + " ");
+        }
+    }
+
+    // How to find the height of a binary tree?
+    public static int height(TreeNode root) {
+        if (root == null) return 0;
+        return 1 + Math.max(height(root.left), height(root.right));
+    }
+
+    // How to check if a binary tree is a binary search tree (BST)?
+    public static boolean isBST(TreeNode root, Integer min, Integer max) {
+        if (root == null) return true;
+        if ((min != null && root.val <= min) || (max != null && root.val >= max)) return false;
+        return isBST(root.left, min, root.val) && isBST(root.right, root.val, max);
+    }
+}
+
+// Hash Tables:
+// How to implement a hash table?
+class HashTable {
+    private static class Node {
+        String key;
+        int value;
+        Node next;
+        Node(String key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    private Node[] table;
+
+    public HashTable(int size) {
+        table = new Node[size];
+    }
+
+    private int hash(String key) {
+        return Math.abs(key.hashCode()) % table.length;
+    }
+
+    // How to handle collisions in a hash table (using separate chaining)?
+    public void put(String key, int value) {
+        int idx = hash(key);
+        Node head = table[idx];
+        while (head != null) {
+            if (head.key.equals(key)) {
+                head.value = value;
+                return;
+            }
+            head = head.next;
+        }
+        Node newNode = new Node(key, value);
+        newNode.next = table[idx];
+        table[idx] = newNode;
+    }
+
+    public Integer get(String key) {
+        int idx = hash(key);
+        Node head = table[idx];
+        while (head != null) {
+            if (head.key.equals(key)) return head.value;
+            head = head.next;
+        }
+        return null;
+    }
+}

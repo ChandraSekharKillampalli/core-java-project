@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Problem_2 {
     public static void main(String[] args) {
-        String input="vivek kadiyan";
+        String input="programming";
         List<String> duplicateCharacter = findDuplicateCharacter(input);
         System.out.println("Duplicate character::::"+duplicateCharacter);
         List<Integer> numbers = Arrays.asList(2,3,4,5);

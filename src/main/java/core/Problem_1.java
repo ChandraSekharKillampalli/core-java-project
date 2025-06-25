@@ -14,6 +14,11 @@ public class Problem_1 {
                 collect(Collectors.groupingBy(a -> a, LinkedHashMap::new, Collectors.counting())).entrySet().stream().
                 filter(a -> a.getValue() > 1).map(Map.Entry::getKey).findFirst().get());
 
+        Map<String, Long> outputMap = Arrays.stream(input.split(""))
+                                               .collect(Collectors.groupingBy(a -> a, Collectors.counting())).entrySet()
+                        .stream().collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue()));
+        System.out.println("Output Map:: "+outputMap);
+
         System.out.println(result);
         // Output: Optional[l]
         // print the first repeated character

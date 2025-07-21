@@ -12,8 +12,8 @@ public class BasicThreads implements Runnable{
 
     }
     public static void main(String[] args){
-        BasicThreads basicThreads = new BasicThreads();
-        basicThreads.run();
+        Thread basicThreads = new Thread(new BasicThreads());
+        basicThreads.start();
     }
 
 }
